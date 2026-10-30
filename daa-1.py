@@ -9,8 +9,3 @@ for i in range(n):
 
 print("\nStep count:", steps)
 
-'''output to enter
-
-
-
-'''
