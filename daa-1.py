@@ -8,3 +8,9 @@ for i in range(n):
     steps += 1
 
 print("\nStep count:", steps)
+
+'''output to enter
+
+
+
+'''
