@@ -31,3 +31,4 @@ def solve(r):
 solve(1)
 for c in q:
     print([int(i == c) for i in range(n)])
+
