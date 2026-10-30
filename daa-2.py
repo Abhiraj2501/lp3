@@ -1,12 +1,18 @@
+
 n = int(input("Number of items: "))
-v = list(map(int, input("Values: ").split()))
+p = list(map(int, input("Profits: ").split()))
 w = list(map(int, input("Weights: ").split()))
-W = int(input("Capacity: "))
+cap = int(input("Capacity: "))
 
-dp = [0] * (W + 1)
+items = sorted(zip(p, w), key=lambda x: x[0] / x[1], reverse=True)
+ans = 0
 
-for i in range(n):
-    for c in range(W, w[i] - 1, -1):
-        dp[c] = max(dp[c], dp[c - w[i]] + v[i])
+for profit, weight in items:
+    ratio = profit / weight
+    take = min(cap, weight)
+    ans += take * ratio
+    cap -= take
+    if cap == 0:
+        break
 
-print("Maximum value:", dp[W])
+print("Maximum Profit:", ans)
