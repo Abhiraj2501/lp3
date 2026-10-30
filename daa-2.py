@@ -17,6 +17,8 @@ for profit, weight in items:
 
 print("Maximum Profit:", ans)
 '''
+output to enter:
+
 3
 25 24 15
 18 15 10
