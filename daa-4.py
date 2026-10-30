@@ -14,3 +14,20 @@ n_queens(8)
 
 '''-------------------------------------------------------------------'''
 
+n = 8
+q = [0]
+
+def solve(r):
+    if r == n:
+        return True
+    for c in range(n):
+        if all(c != q[i] and abs(c - q[i]) != r - i for i in range(r)):
+            q.append(c)
+            if solve(r + 1):
+                return True
+            q.pop()
+    return False
+
+solve(1)
+for c in q:
+    print([int(i == c) for i in range(n)])
