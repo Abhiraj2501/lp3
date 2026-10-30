@@ -14,5 +14,5 @@ for profit, weight in items:
     cap -= take
     if cap == 0:
         break
-
+    
 print("Maximum Profit:", ans)
