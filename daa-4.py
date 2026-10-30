@@ -11,3 +11,4 @@ def n_queens(n, r=1, cols=[0], d1=[0], d2=[0]):
     return False
 
 n_queens(8)
+
