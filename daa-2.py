@@ -16,4 +16,9 @@ for profit, weight in items:
         break
 
 print("Maximum Profit:", ans)
-''''''
+'''
+3
+25 24 15
+18 15 10
+20
+'''
