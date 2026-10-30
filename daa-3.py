@@ -10,3 +10,10 @@ for i in range(n):
         dp[c] = max(dp[c], dp[c - w[i]] + v[i])
 
 print("Maximum value:", dp[W])
+
+'''
+3
+25 24 15
+18 15 10
+20
+'''
