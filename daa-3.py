@@ -12,6 +12,7 @@ for i in range(n):
 print("Maximum value:", dp[W])
 
 '''
+output to enter
 3
 25 24 15
 18 15 10
