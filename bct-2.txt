@@ -1,37 +1,31 @@
+act3: BCT bankAccount -> 
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
-
-contract studentd{
-    struct Student{
-        uint256 rollNo;
-        string name;
-        uint256 marks;
+contract BankSimple {
+    address public owner;
+    constructor() {
+        owner = msg.sender;
     }
 
-    Student[] public students;
-
-    function addStudent(uint256 _rollNo, string memory _name, uint256 _marks) public {
-        students.push(Student(_rollNo,_name,_marks));
+    //deposit eth
+    function deposit() public payable {
+        require(msg.value > 0, "Deposit > 0");
     }
 
-    function getStudent(uint256 index) public view returns(uint256,string memory,uint256){
-        require(index < students.length,"Student doesnt exists");
-        Student memory s = students[index];
-        return(s.rollNo,s.name,s.marks);
+    //withdraw
+    function withdraw(uint256 amount) public {
+        require(msg.sender == owner,"Not owner");
+        require(amount <= address(this).balance,"Not enough");
+        (bool success, ) = payable(owner).call{value: amount}("");
+        require(success, "Transfer failed");
     }
 
-    function deleteStudent(uint256 index) public {
-        require(index < students.length, "Student doesnt exists");
-        // copy last element into the deleted slot, then pop
-        students[index] = students[students.length - 1];
-        students.pop();
+    //show balance
+    function showBalance() public view returns(uint256){
+        return address(this).balance;
     }
 
-    function getStudentCount() public view returns(uint256) {
-        return students.length;
-    }
-
-    fallback() external payable {}
-
-    receive() external payable { }
+    //accept eth
+    receive() external payable {}
 }
